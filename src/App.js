@@ -56,7 +56,7 @@ function App() {
     {/* <About/> */}
     
     <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
-    <Alert alert={alert}/>ˀ
+    <Alert alert={alert}/>
     <FormText showAlert ={showAlert} mode={mode}/>
     
     {/* <Router>
