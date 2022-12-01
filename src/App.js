@@ -5,13 +5,13 @@ import PropTypes from 'prop-types'
 import FormText from './components/FormText';
 import React, { useState } from 'react'
 import Alert from './components/Alert';
-import About from './components/About';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+// import About from './components/About';
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route,
+//   Link
+// } from "react-router-dom";
 function App() {
   const [mode, setMode] = useState('light');
   const [alert, setAlert] = useState(null);
@@ -54,8 +54,12 @@ function App() {
     <>
     {/* <Navbar title="Ishvinder" disable="disable"/> */}
     {/* <About/> */}
-    <Router>
-
+    
+    <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
+    <Alert alert={alert}/>
+    <FormText showAlert ={showAlert} mode={mode}/>
+    
+    {/* <Router>
     <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
     <Alert alert={alert}/>
     <Switch>
@@ -74,9 +78,9 @@ function App() {
           <Route exact path="/Home"> 
             <FormText showAlert ={showAlert} mode={mode}/>
           </Route>
-    </Switch>
+    </Switch> */}
     {/* <FormText showAlert ={showAlert} mode={mode}/> */}
-    </Router>
+    {/* </Router> */}
     </>
   );
 }
