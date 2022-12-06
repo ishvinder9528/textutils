@@ -27,6 +27,7 @@ export default function FormText(props) {
     text.select();
     navigator.clipboard.writeText(text.value);
     props.showAlert("Text Copied","success")
+    document.getSelection().removeAllRanges();
   }
 
   const handleClear = () => {
@@ -54,21 +55,21 @@ export default function FormText(props) {
       
     
       
-    <button onClick={handleUp} className="btn btn-primary my-2">Convert to UpperCase</button>
-    <button onClick={handleLo} className="btn btn-primary my-2 mx-1">Convert to LowerCase</button>
-    <button onClick={handleSpace} className="btn btn-primary my-2 mx-1">Remove Space</button>
-    <button onClick={handleClear} className="btn btn-primary my-2 mx-1">Clear</button>
-    <button onClick={handleCopy} className="btn btn-primary my-2 mx-1">Copy Text</button>
+    <button disabled={text.length===0} onClick={handleUp} className="btn btn-primary my-2">Convert to UpperCase</button>
+    <button disabled={text.length===0} onClick={handleLo} className="btn btn-primary my-2 mx-1">Convert to LowerCase</button>
+    <button disabled={text.length===0} onClick={handleSpace} className="btn btn-primary my-2 mx-1">Remove Space</button>
+    <button disabled={text.length===0} onClick={handleClear} className="btn btn-primary my-2 mx-1">Clear</button>
+    <button disabled={text.length===0} onClick={handleCopy} className="btn btn-primary my-2 mx-1">Copy Text</button>
     </div>
     
     <div className={`container`} style={{ color:`${props.mode==='dark'?'white':'black'}`}}>
       <h2>Your Text Summary</h2>
-      <p>{text.split(" ").length} words, {text.length} Alphabets</p>
+      <p>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words, {text.length} Alphabets</p>
     </div>
 
     <div className="container" style={{ color:`${props.mode==='dark'?'white':'black'}`}}>
       <h2>Your Text</h2>
-      <p>{text.length>0?text:"Enter Some Text in TextBox to Preview Something"}</p>
+      <p>{text.length>0?text:"Nothing To Preview"}</p>
     </div>
     </>
   )

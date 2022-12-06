@@ -5,24 +5,35 @@ import PropTypes from 'prop-types'
 import FormText from './components/FormText';
 import React, { useState } from 'react'
 import Alert from './components/Alert';
-// import About from './components/About';
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route,
-//   Link
-// } from "react-router-dom";
+import About from './components/About';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 function App() {
   const [mode, setMode] = useState('light');
   const [alert, setAlert] = useState(null);
 
-  const toggleMode=() => {
+  // const removeBackgroungColor = () =>{
+  //   document.body.classList.remove('bg-danger');
+  //   document.body.classList.remove('bg-success');
+  //   document.body.classList.remove('bg-dark');
+  //   document.body.classList.remove('bg-light');
+  //   document.body.classList.remove('bg-waring');
+  //   document.body.classList.remove('bg-primary');
+  // }
+
+  const toggleMode=(cls) => {
+    // console.log(cls)
+    // removeBackgroungColor();
+    // document.body.classList.add(`bg-${cls}`)  
     if(mode === 'light') {
       setMode('dark');
       document.body.style.backgroundColor='#333333'
       showAlert("Dark Mode has been enabled", "success");
     }
-    else{
+    else {
       setMode('light');
       document.body.style.backgroundColor='white'
       showAlert("Light Mode has been enabled", "success");
@@ -41,12 +52,13 @@ function App() {
     
   }
   
-  setInterval(() => {
-    document.title= "TextUtils - Edit Here"
-  }, 1500);
-  setInterval(() => {
-    document.title= "TextUtils - Helloo"
-  }, 2000);
+  document.title='TextUtils - Edit Your Text Here'
+  // setInterval(() => {
+  //   document.title= "TextUtils - Edit Here"
+  // }, 1500);
+  // setInterval(() => {
+  //   document.title= "TextUtils - Helloo"
+  // }, 2000);
 
 
 
@@ -55,32 +67,31 @@ function App() {
     {/* <Navbar title="Ishvinder" disable="disable"/> */}
     {/* <About/> */}
     
-    <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
+    {/* <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
     <Alert alert={alert}/>
-    <FormText showAlert ={showAlert} mode={mode}/>
+    <FormText showAlert ={showAlert} mode={mode}/> */}
     
-    {/* <Router>
+    <Router>
     <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
     <Alert alert={alert}/>
-    <Switch>
-          <Route exact path="/about">
-            <About />
-          </Route>
-          <Route exact path="/About">
-            <About />
-          </Route>
-          <Route exact path="/"> 
-            <FormText showAlert ={showAlert} mode={mode}/>
-          </Route>
-          <Route exact path="/home"> 
-            <FormText showAlert ={showAlert} mode={mode}/>
-          </Route>
-          <Route exact path="/Home"> 
-            <FormText showAlert ={showAlert} mode={mode}/>
-          </Route>
-    </Switch> */}
-    {/* <FormText showAlert ={showAlert} mode={mode}/> */}
-    {/* </Router> */}
+      <Switch>
+            <Route exact path="/about">
+              <About />
+            </Route>
+            <Route exact path="/About">
+              <About />
+            </Route>
+            <Route exact path="/"> 
+              <FormText showAlert ={showAlert} mode={mode}/>
+            </Route>
+            <Route exact path="/home"> 
+              <FormText showAlert ={showAlert} mode={mode}/>
+            </Route>
+            <Route exact path="/Home"> 
+              <FormText showAlert ={showAlert} mode={mode}/>
+            </Route>
+      </Switch>
+    </Router>
     </>
   );
 }
